@@ -112,7 +112,7 @@ Resources:
   SecurityGroup:
     Type: 'AWS::EC2::SecurityGroup'
     Properties:
-      GroupName: ${self:service}
+      GroupName: ${self:provider.stackName}SG
       GroupDescription: 'HTTPS/HTTPS inbound; Nothing outbound'
       VpcId: { Ref: Vpc }
       SecurityGroupIngress:
@@ -140,7 +140,7 @@ Resources:
     Type: 'AWS::ElasticLoadBalancingV2::LoadBalancer'
     Properties:
       Type: 'application'
-      Name: ${self:service}
+      Name: ${self:provider.stackName}ELB
       IpAddressType: 'ipv4'
       Scheme: 'internet-facing'
       LoadBalancerAttributes:
