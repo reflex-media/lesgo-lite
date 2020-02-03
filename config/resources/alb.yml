@@ -18,7 +18,7 @@ Resources:
       CidrBlock: 10.0.0.0/16
       Tags:
         - Key: Name
-          Value: ${self:provider.stackName}VPC
+          Value: ${self:provider.stackName}-vpc
 
   #
   # Public Subnet where ALB is sited on.
@@ -30,7 +30,7 @@ Resources:
       CidrBlock: 10.0.21.0/24
       Tags:
         - Key: Name
-          Value: ${self:provider.stackName}PublicSubnet1
+          Value: ${self:provider.stackName}-public-subnet-1
       VpcId:
         Ref: Vpc
   PublicSubnet2:
@@ -40,7 +40,7 @@ Resources:
       CidrBlock: 10.0.22.0/24
       Tags:
         - Key: Name
-          Value: ${self:provider.stackName}PublicSubnet2
+          Value: ${self:provider.stackName}-public-subnet-2
       VpcId:
         Ref: Vpc
   #
@@ -53,20 +53,20 @@ Resources:
       Domain: vpc
       Tags:
         - Key: Name
-          Value: ${self:provider.stackName}EIP1
+          Value: ${self:provider.stackName}-eip-1
   Eip2:
     Type: AWS::EC2::EIP
     Properties:
       Domain: vpc
       Tags:
         - Key: Name
-          Value: ${self:provider.stackName}EIP2
+          Value: ${self:provider.stackName}-eip-2
   InternetGateway:
     Type: AWS::EC2::InternetGateway
     Properties:
       Tags:
         - Key: Name
-          Value: ${self:provider.stackName}IG
+          Value: ${self:provider.stackName}-internet-gateway
   VPCGatewayAttachment:
     Type: AWS::EC2::VPCGatewayAttachment
     Properties:
@@ -79,7 +79,7 @@ Resources:
     Properties:
       Tags:
         - Key: Name
-          Value: ${self:provider.stackName}PublicRouteTable
+          Value: ${self:provider.stackName}-public-route-table
       VpcId:
         Ref: Vpc
   PublicRoute:
@@ -112,7 +112,7 @@ Resources:
   SecurityGroup:
     Type: 'AWS::EC2::SecurityGroup'
     Properties:
-      GroupName: ${self:provider.stackName}SG
+      GroupName: ${self:provider.stackName}-security-group
       GroupDescription: 'HTTPS/HTTPS inbound; Nothing outbound'
       VpcId: { Ref: Vpc }
       SecurityGroupIngress:
@@ -131,7 +131,7 @@ Resources:
           CidrIp: 127.0.0.1/32
       Tags:
         - Key: Name
-          Value: ${self:provider.stackName}SG
+          Value: ${self:provider.stackName}-security-group
 
   #
   # ALB with default 404 HTTP listener
@@ -155,7 +155,7 @@ Resources:
         - { Ref: PublicSubnet2 }
       Tags:
         - Key: Name
-          Value: ${self:provider.stackName}ELB
+          Value: ${self:provider.stackName}-elb
   HTTPListener:
     Type: 'AWS::ElasticLoadBalancingV2::Listener'
     Properties:
