@@ -140,7 +140,7 @@ Resources:
     Type: 'AWS::ElasticLoadBalancingV2::LoadBalancer'
     Properties:
       Type: 'application'
-      Name: ${self:provider.stackName}ELB
+      Name: ${self:provider.stackName}-elb
       IpAddressType: 'ipv4'
       Scheme: 'internet-facing'
       LoadBalancerAttributes:
