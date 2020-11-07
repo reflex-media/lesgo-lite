@@ -5,7 +5,11 @@
 
 Bootstrap your next serverless microservice project with an even lighter node.js framework.
 
-**NOTE:** This is not an introduction to the Serverless Framework. You would already need to know how Serverless Framework works prior to using of this template.
+> **NOTE:** This is not an introduction to the Serverless Framework. You would already need to know how Serverless Framework works prior to using of this template.
+
+Lesgo! Lite provides the bare minimal template to quickly build a simple REST API endpoint. For a more complex project with examples, use the [Lesgo!](https://github.com/reflex-media/lesgo) Framework instead.
+
+Refer to the [Getting Started](https://reflex-media.github.io/lesgo-docs/getting-started/installation/) guide to start development.
 
 ## Learning Lesgo!
 
