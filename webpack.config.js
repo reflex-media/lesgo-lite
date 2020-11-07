@@ -38,6 +38,14 @@ module.exports = {
         'described-resolve',
         [
           {
+            name: 'Commands',
+            alias: [
+              path.resolve(__dirname, 'src/commands/'),
+              path.resolve(__dirname, '../lesgo-framework/src/commands/'),
+              path.resolve(__dirname, 'node_modules/lesgo/src/commands/'),
+            ],
+          },
+          {
             name: 'Config',
             alias: [
               path.resolve(__dirname, 'src/config/'),
@@ -107,14 +115,6 @@ module.exports = {
               path.resolve(__dirname, 'src/utils/'),
               path.resolve(__dirname, '../lesgo-framework/src/utils/'),
               path.resolve(__dirname, 'node_modules/lesgo/src/utils/'),
-            ],
-          },
-          {
-            name: 'Commands',
-            alias: [
-              path.resolve(__dirname, 'src/commands/'),
-              path.resolve(__dirname, '../lesgo-framework/src/commands/'),
-              path.resolve(__dirname, 'node_modules/lesgo/src/commands/'),
             ],
           },
         ],

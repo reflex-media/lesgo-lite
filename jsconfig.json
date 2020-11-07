@@ -4,6 +4,11 @@
     "allowSyntheticDefaultImports": false,
     "baseUrl": "./",
     "paths": {
+      "Commands/*": [
+        "src/commands/*",
+        "../lesgo-framework/src/commands/*",
+        "node_modules/lesgo/src/commands/*"
+      ],
       "Config/*": [
         "src/config/*",
         "../lesgo-framework/src/config/*",

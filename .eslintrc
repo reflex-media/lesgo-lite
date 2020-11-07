@@ -4,6 +4,9 @@
     "plugin:jest/recommended",
     "plugin:prettier/recommended"
   ],
+  "settings": {
+    "import/resolver": "webpack"
+  },
   "rules": {
     "no-multi-str": "off",
     "import/no-named-as-default": "off",
