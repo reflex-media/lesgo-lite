@@ -29,9 +29,6 @@ provider:
     SITE: ${self:service}
     PRODUCT: ${self:service}
     STAGE: ${self:provider.stage}
-    datadog: monitored
-    service: ${env:APP_NAME}
-    env: ${self:provider.stage}
 
 custom:
   path:
@@ -51,8 +48,7 @@ custom:
 
 # Add all the functions here
 functions:
-  - ${file(${self:custom.path.functions}/ping.yml)}
-  - ${file(${self:custom.path.functions}/cors.yml)}
+  - ${file(${self:custom.path.functions}/utils.yml)}
 
 # Add all the additional resources here
 resources:

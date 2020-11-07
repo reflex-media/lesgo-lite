@@ -1,7 +1,7 @@
 {
   "name": "lesgo-lite",
   "version": "0.6.0",
-  "description": "An even lighter Node.js framework for Serverless Microservice projects",
+  "description": "An even lighter Node.js template for a simple REST API microservice project using the Serverless Framework",
   "scripts": {
     "start": "sls offline start --stage local --env local --skipCacheInvalidation",
     "server": "sls offline start --stage local --env local",
@@ -58,7 +58,7 @@
   "author": "Sufiyan Rahmat <mosufy@gmail.com>",
   "license": "MIT",
   "engines": {
-    "node": "12.16.0 - 12.19.0"
+    "node": "12.x"
   },
   "husky": {
     "hooks": {
