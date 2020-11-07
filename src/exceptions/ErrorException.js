@@ -1,10 +1,8 @@
-import { ERROR_EXCEPTION } from 'Constants/errorCodes';
-
 export default class ErrorException extends Error {
   constructor(
     message,
-    errorCode = ERROR_EXCEPTION,
-    httpStatusCode = 400,
+    errorCode = 'ERROR_EXCEPTION',
+    httpStatusCode = 500,
     extra
   ) {
     super();

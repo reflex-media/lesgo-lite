@@ -12,8 +12,7 @@ module.exports = {
     '^Config(.*)$': '<rootDir>/src/config$1',
     '^Constants/errorCodes(.*)$': '<rootDir>/src/constants/errorCodes$1',
     '^Core(.*)$': '<rootDir>/src/core$1',
-    '^Exceptions/ErrorException(.*)$':
-      '<rootDir>/src/exceptions/ErrorException$1',
+    '^Exceptions(.*)$': '<rootDir>/src/exceptions$1',
     '^Models(.*)$': '<rootDir>/src/models$1',
     '^Utils/logger$': '<rootDir>/tests/__mocks__/utils/logger.js',
   },

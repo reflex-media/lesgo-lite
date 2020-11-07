@@ -86,6 +86,14 @@ module.exports = {
             ],
           },
           {
+            name: 'Models',
+            alias: [
+              path.resolve(__dirname, 'src/models/'),
+              path.resolve(__dirname, '../lesgo-framework/src/models/'),
+              path.resolve(__dirname, 'node_modules/lesgo/src/models/'),
+            ],
+          },
+          {
             name: 'Services',
             alias: [
               path.resolve(__dirname, 'src/services/'),
@@ -99,6 +107,14 @@ module.exports = {
               path.resolve(__dirname, 'src/utils/'),
               path.resolve(__dirname, '../lesgo-framework/src/utils/'),
               path.resolve(__dirname, 'node_modules/lesgo/src/utils/'),
+            ],
+          },
+          {
+            name: 'Commands',
+            alias: [
+              path.resolve(__dirname, 'src/commands/'),
+              path.resolve(__dirname, '../lesgo-framework/src/commands/'),
+              path.resolve(__dirname, 'node_modules/lesgo/src/commands/'),
             ],
           },
         ],

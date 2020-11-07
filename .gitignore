@@ -20,7 +20,6 @@ yarn-error.log
 .env.dev.local
 .env.test.local
 .env.sandbox.local
-.env.staging.local
 .env.prod.local
 
 # log files

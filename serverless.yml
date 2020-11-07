@@ -1,13 +1,10 @@
-service:
-  name: ${env:APP_NAME}
+service: ${env:APP_NAME}
 
 plugins:
   - serverless-webpack
-  - serverless-api-compression
   - serverless-offline
   - serverless-plugin-log-retention
   - serverless-dotenv-plugin
-  - serverless-plugin-alb-apikey
 
 package:
   individually: true
@@ -43,11 +40,10 @@ custom:
     resources: config/resources
   serverless-offline:
     port: 8888
+    ignoreJWTSignature: true
   webpack:
     packager: yarn
   logRetentionInDays: ${env:AWS_LOG_RETENTION_DAYS, 7}
-  contentEncoding:
-    contentCompression: ${env:AWS_APIGATEWAY_COMPRESSION_MAX_BYTES, 100}
   http:
     cors: ${file(config/utils/cors.yml)}
   dotenv:
@@ -60,4 +56,4 @@ functions:
 
 # Add all the additional resources here
 resources:
-  - ${file(${self:custom.path.resources}/alb.yml)}
+  # - ${file(${self:custom.path.resources}/sample-resource.yml)}

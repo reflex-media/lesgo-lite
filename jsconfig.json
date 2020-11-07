@@ -34,6 +34,11 @@
         "../lesgo-framework/src/middlewares/*",
         "node_modules/lesgo/src/middlewares/*"
       ],
+      "Models/*": [
+        "src/models/*",
+        "../lesgo-framework/src/models/*",
+        "node_modules/lesgo/src/models/*"
+      ],
       "Services/*": [
         "src/services/*",
         "../lesgo-framework/src/services/*",

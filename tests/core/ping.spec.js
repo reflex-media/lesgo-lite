@@ -1,5 +1,4 @@
 import ping from 'Core/ping';
-import { ERROR_SAMPLE, ERROR_UNKNOWN_PARAMETER } from 'Constants/errorCodes';
 
 describe('test ping core', () => {
   it('ping request should return Pong', () => {
@@ -15,14 +14,14 @@ describe('test ping core', () => {
   it('ping request with sample error exception should return error exception', () => {
     return expect(ping({ 'sample-error': 'exception' })).rejects.toHaveProperty(
       'code',
-      ERROR_SAMPLE
+      'ERROR_SAMPLE'
     );
   });
 
   it('ping request with unknown input should return error exception', () => {
     return expect(ping({ invalid: 'invalid' })).rejects.toHaveProperty(
       'code',
-      ERROR_UNKNOWN_PARAMETER
+      'ERROR_UNKNOWN_PARAMETER'
     );
   });
 });
