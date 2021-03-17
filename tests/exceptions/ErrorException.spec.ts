@@ -8,7 +8,7 @@ describe('test ErrorException', () => {
     expect(data.message).toBe('Error exception test');
     expect(data.code).toBe('ERROR_EXCEPTION');
     expect(data.statusCode).toBe(500);
-    expect(data.extra).toMatchObject({});
+    expect(data.extra).toBeUndefined();
   });
 
   it('should allow for custom parameters', () => {

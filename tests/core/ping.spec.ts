@@ -1,27 +1,30 @@
 import ping from 'Core/utils/ping';
 
-describe('test ping core', () => {
-  it('ping request should return Pong', () => {
-    return expect(ping(null)).resolves.toBe('Pong');
+const FILE = 'Core/utils/ping';
+
+describe('test Core/utils/ping', () => {
+  it('should return Pong by default', () => {
+    return expect(ping()).resolves.toBe('Pong');
   });
 
-  it('ping request with sample error should return error message', () => {
-    return expect(ping({ 'sample-error': 'message' })).rejects.toBe(
-      'Error Message'
-    );
+  it('should return Pong with authSub when present', () => {
+    return expect(ping({}, '123123')).resolves.toMatchObject({
+      message: 'Pong',
+      sub: '123123',
+    });
   });
 
-  it('ping request with sample error exception should return error exception', () => {
+  it('should return error with sample error input', () => {
     return expect(ping({ 'sample-error': 'exception' })).rejects.toHaveProperty(
       'code',
-      'ERROR_SAMPLE'
+      `${FILE}::ERROR_SAMPLE`
     );
   });
 
-  it('ping request with unknown input should return error exception', () => {
+  it('should return error with unknown input', () => {
     return expect(ping({ invalid: 'invalid' })).rejects.toHaveProperty(
       'code',
-      'ERROR_UNKNOWN_PARAMETER'
+      `${FILE}::ERROR_UNKNOWN_PARAMETER`
     );
   });
 });

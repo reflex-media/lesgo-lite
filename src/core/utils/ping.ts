@@ -1,9 +1,12 @@
 import logger from 'Utils/logger';
+import isEmpty from 'Utils/isEmpty';
 import ErrorException from 'Exceptions/ErrorException';
 
-const ping = (input, authSub = null) => {
+const FILE = 'Core/utils/ping';
+
+const ping = (input?: object, authSub?: string) => {
   return new Promise((resolve, reject) => {
-    if (!input) {
+    if (isEmpty(input)) {
       if (!authSub) {
         return resolve('Pong');
       }
@@ -14,14 +17,10 @@ const ping = (input, authSub = null) => {
       });
     }
 
-    if (input['sample-error'] === 'message') {
-      // eslint-disable-next-line prefer-promise-reject-errors
-      return reject('Error Message');
-    }
-
-    if (input['sample-error'] === 'exception') {
-      // logger.error('Sample error exception', { code: 'ERROR_SAMPLE' });
-      return reject(new ErrorException('Error exception', 'ERROR_SAMPLE'));
+    if (input['sample-error']) {
+      return reject(
+        new ErrorException('Error exception', `${FILE}::ERROR_SAMPLE`)
+      );
     }
 
     logger.warn('Unknown parameter supplied', { input });
@@ -29,7 +28,8 @@ const ping = (input, authSub = null) => {
     return reject(
       new ErrorException(
         'Unknown parameter supplied',
-        'ERROR_UNKNOWN_PARAMETER'
+        `${FILE}::ERROR_UNKNOWN_PARAMETER`,
+        400
       )
     );
   });
