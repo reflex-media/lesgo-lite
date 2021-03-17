@@ -6,7 +6,7 @@ const FILE = 'Core/utils/ping';
 
 const ping = (input?: object, authSub?: string) => {
   return new Promise((resolve, reject) => {
-    if (isEmpty(input)) {
+    if (!input || isEmpty(input)) {
       if (!authSub) {
         return resolve('Pong');
       }
