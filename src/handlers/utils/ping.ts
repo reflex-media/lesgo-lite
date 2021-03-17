@@ -1,6 +1,6 @@
 import middy from '@middy/core';
 import httpMiddleware from 'Middlewares/httpMiddleware';
-import ping from 'Core/ping';
+import ping from 'Core/utils/ping';
 import app from 'Config/app';
 
 const originalHandler = event => {

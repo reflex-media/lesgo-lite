@@ -1,9 +1,15 @@
 export default class ErrorException extends Error {
+  statusCode: number;
+
+  code: string;
+
+  extra: {};
+
   constructor(
     message,
     errorCode = 'ERROR_EXCEPTION',
     httpStatusCode = 500,
-    extra
+    extra = {}
   ) {
     super();
     this.name = 'ErrorException';

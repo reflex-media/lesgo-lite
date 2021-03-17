@@ -1,4 +1,4 @@
-import ping from 'Core/ping';
+import ping from 'Core/utils/ping';
 
 describe('test ping core', () => {
   it('ping request should return Pong', () => {

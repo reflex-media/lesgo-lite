@@ -19,16 +19,63 @@ provider:
   stage: ${opt:stage, 'local'}
   profile: ${env:AWS_ACCOUNT_PROFILE}
   region: ${opt:region, env:AWS_ACCOUNT_REGION}
-  apiKeys:
-    - usagePlan:
-        - name: ${self:provider.stackName}-apiKey
-          value: ${env:AWS_APIGATEWAY_SECRET_KEY}
-  usagePlan:
-    - usagePlan:
+  apiGateway:
+    shouldStartNameWithService: true
+    minimumCompressionSize: ${env:AWS_APIGATEWAY_MIN_COMPRESSION_SIZE, 100}
+  # httpApi:
+  #   authorizers:
+  #     cognitoJWTAuthorizer:
+  #       identitySource: $request.header.Authorization
+  #       issuerUrl: https://cognito-idp.${self:provider.region}.amazonaws.com/${env:AWS_COGNITO_USER_POOL_ID}
+  #       audience:
+  #         - ${env:AWS_COGNITO_CLIENT_ID}
+    cors: true
+  vpc:
+    securityGroupIds:
+      - ${env:AWS_VPC_SECURITY_GROUP_ID}
+    subnetIds:
+      - ${env:AWS_VPC_SUBNET_1_ID}
+      - ${env:AWS_VPC_SUBNET_2_ID}
+      - ${env:AWS_VPC_SUBNET_3_ID}
+      - ${env:AWS_VPC_SUBNET_4_ID}
   stackTags:
     SITE: ${self:service}
     PRODUCT: ${self:service}
     STAGE: ${self:provider.stage}
+    datadog: monitored
+    service: ${env:APP_NAME}
+    env: ${self:provider.stage}
+  iamRoleStatements:
+    - Effect: Allow
+      Action:
+        - lambda:InvokeFunction
+      Resource: '*'
+    - Effect: 'Allow'
+      Action:
+        - 'sqs:SendMessage'
+        - 'sqs:ReceiveMessage'
+        - 'sqs:DeleteMessage'
+      Resource: 'arn:aws:sqs:${self:provider.region}:*:*'
+    - Effect: 'Allow'
+      Action:
+        - 'secretsmanager:GetSecretValue'
+      Resource:
+        - ${env:DB_SECRET_ARN}
+        - ${env:DB_SECRET_COMMAND_ARN}
+    - Effect: 'Allow'
+      Action:
+        - 'rds-data:ExecuteStatement'
+        - 'rds-data:BatchExecuteStatement'
+      Resource: ${env:DB_RESOURCE_ARN}
+    - Effect: 'Allow'
+      Action:
+        - 'dynamodb:Query'
+        - 'dynamodb:GetItem'
+        - 'dynamodb:PutItem'
+        - 'dynamodb:UpdateItem'
+        - 'dynamodb:BatchWriteItem'
+        - 'dynamodb:BatchGetItem'
+      Resource: 'arn:aws:dynamodb:${self:provider.region}:*:table/${self:provider.stackName}-*'
 
 custom:
   path:
@@ -38,11 +85,7 @@ custom:
   serverless-offline:
     port: 8888
     ignoreJWTSignature: true
-  webpack:
-    packager: yarn
   logRetentionInDays: ${env:AWS_LOG_RETENTION_DAYS, 7}
-  http:
-    cors: ${file(config/utils/cors.yml)}
   dotenv:
     basePath: config/environments/
 

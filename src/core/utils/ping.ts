@@ -1,9 +1,18 @@
 import logger from 'Utils/logger';
 import ErrorException from 'Exceptions/ErrorException';
 
-const ping = input => {
+const ping = (input, authSub = null) => {
   return new Promise((resolve, reject) => {
-    if (!input) return resolve('Pong');
+    if (!input) {
+      if (!authSub) {
+        return resolve('Pong');
+      }
+
+      return resolve({
+        message: 'Pong',
+        sub: authSub,
+      });
+    }
 
     if (input['sample-error'] === 'message') {
       // eslint-disable-next-line prefer-promise-reject-errors
@@ -11,7 +20,7 @@ const ping = input => {
     }
 
     if (input['sample-error'] === 'exception') {
-      logger.error('Sample error exception', { code: 'ERROR_SAMPLE' });
+      // logger.error('Sample error exception', { code: 'ERROR_SAMPLE' });
       return reject(new ErrorException('Error exception', 'ERROR_SAMPLE'));
     }
 

@@ -19,7 +19,7 @@ module.exports = {
   module: {
     rules: [
       {
-        test: /\.js$/, // include .js files
+        test: /\.ts$/, // include .ts files
         enforce: 'pre', // preload the jshint loader
         exclude: /node_modules/, // exclude any and all files in the node_modules folder
         include: __dirname,
@@ -33,6 +33,7 @@ module.exports = {
   },
   externals: [{ 'aws-sdk': 'commonjs aws-sdk' }],
   resolve: {
+    extensions: ['.tsx', '.ts', '.js'],
     plugins: [
       new AliasPlugin(
         'described-resolve',
@@ -47,7 +48,11 @@ module.exports = {
           },
           {
             name: 'Exceptions',
-            alias: [path.resolve(__dirname, 'src/exceptions/')],
+            alias: [
+              path.resolve(__dirname, 'src/exceptions/'),
+              path.resolve(__dirname, '../lesgo-framework/src/exceptions'),
+              path.resolve(__dirname, 'node_modules/lesgo/src/exceptions'),
+            ],
           },
           {
             name: 'Handlers',
