@@ -5,7 +5,7 @@ export default class ErrorException extends Error {
 
   code: string;
 
-  extra: {};
+  extra?: {};
 
   constructor(
     message: string,

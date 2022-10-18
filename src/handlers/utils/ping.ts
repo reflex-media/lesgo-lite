@@ -3,8 +3,12 @@ import httpMiddleware from 'Middlewares/httpMiddleware';
 import ping from 'Core/utils/ping';
 import app from 'Config/app';
 
-const originalHandler = event => {
-  return ping(event.input);
+import type { Handler } from 'aws-lambda';
+import type { HttpGatewayEvent } from 'Middlewares/normalizeHttpRequestMiddleware';
+import type { PingResult } from 'Core/utils/ping';
+
+const originalHandler: Handler<HttpGatewayEvent, PingResult> = event => {
+  return ping((event.input ?? {}) as Record<string, any>);
 };
 
 // eslint-disable-next-line import/prefer-default-export

@@ -1,10 +1,11 @@
 service: ${env:APP_NAME}
+frameworkVersion: '3'
 
 plugins:
+  - serverless-dotenv-plugin
   - serverless-webpack
   - serverless-offline
   - serverless-plugin-log-retention
-  - serverless-dotenv-plugin
   #
   # Uncomment below to enable nested stacks on CloudFormation
   # See https://reflex-media.github.io/lesgo-docs/0.7.7/prologue/release-notes/#cloudformation-nested-stack-support
@@ -18,6 +19,9 @@ plugins:
 
 package:
   individually: true
+
+useDotenv: true
+configValidationMode: error
 
 provider:
   name: aws

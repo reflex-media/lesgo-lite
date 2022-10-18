@@ -9,12 +9,12 @@ type Arguments = {
   authSub?: string;
 };
 
-type PingResult = {
+export type PingResult = {
   message: string;
   sub?: string;
 };
 
-const validateInput = (input?: Arguments): Arguments => {
+const validateInput = (input: Arguments): Arguments => {
   const validFields = [
     { key: 'sample-error', type: 'string', required: false },
     { key: 'authSub', type: 'string', required: false },
@@ -23,9 +23,14 @@ const validateInput = (input?: Arguments): Arguments => {
   try {
     return validateFields(input, validFields);
   } catch (err) {
-    throw new ErrorException(err.message, `${FILE}::INVALID_INPUT`, 400, {
-      err,
-    });
+    throw new ErrorException(
+      (err as Error).message,
+      `${FILE}::INVALID_INPUT`,
+      400,
+      {
+        err,
+      }
+    );
   }
 };
 
@@ -33,7 +38,7 @@ export default async (
   input?: Arguments,
   authSub?: string
 ): Promise<PingResult> => {
-  const validated = validateInput({ ...input, authSub });
+  const validated = validateInput({ ...(input ?? {}), authSub });
 
   if (isEmpty(input)) {
     if (!authSub) {
