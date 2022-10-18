@@ -8,21 +8,25 @@
       "Core/*": ["src/core/*"],
       "Exceptions/*": [
         "src/exceptions/*",
-        "node_modules/lesgo/src/exceptions/*"
+        "node_modules/lesgo/src/exceptions/*",
+        "node_modules/@types/lesgo/exceptions/*"
       ],
       "Handlers/*": ["src/handlers/*"],
       "Middlewares/*": [
         "src/middlewares/*",
-        "node_modules/lesgo/src/middlewares/*"
+        "node_modules/lesgo/src/middlewares/*",
+        "node_modules/@types/lesgo/middlewares/*"
       ],
       "Models/*": ["src/models/*"],
       "Services/*": [
         "src/services/*",
-        "node_modules/lesgo/src/services/*"
+        "node_modules/lesgo/src/services/*",
+        "node_modules/@types/lesgo/services/*"
       ],
       "Utils/*": [
         "src/utils/*",
-        "node_modules/lesgo/src/utils/*"
+        "node_modules/lesgo/src/utils/*",
+        "node_modules/@types/lesgo/utils/*"
       ]
     }
   },
