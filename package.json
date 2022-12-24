@@ -20,7 +20,7 @@
     "lint-fix": "eslint '**/*.{js,ts,jsx,tsx}' --fix"
   },
   "dependencies": {
-    "@middy/core": "^1.4.0",
+    "@middy/core": "xXLXx/middy-core#1.4.1",
     "lesgo": "reflex-media/lesgo-framework#release/v0.7.8"
   },
   "devDependencies": {
