@@ -1,8 +1,8 @@
 import middy from '@middy/core';
-import httpMiddleware from 'Middlewares/httpMiddleware';
+import httpMiddleware from 'lesgo/middlewares/httpMiddleware';
 import { APIGatewayProxyEvent } from 'aws-lambda';
-import ping from 'Core/utils/ping';
-import app from 'Config/app';
+import ping from 'core/utils/ping';
+import app from 'config/app';
 
 const originalHandler = (
   event: APIGatewayProxyEvent & {

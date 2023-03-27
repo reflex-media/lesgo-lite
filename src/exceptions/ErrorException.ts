@@ -1,4 +1,4 @@
-import isEmpty from 'Utils/isEmpty';
+import isEmpty from 'lesgo/utils/isEmpty';
 
 export default class ErrorException extends Error {
   statusCode: number;

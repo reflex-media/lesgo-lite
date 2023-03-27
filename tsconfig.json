@@ -37,6 +37,31 @@
         "node_modules/lesgo/src/utils/*",
         "node_modules/@types/lesgo/utils/*"
       ],
+      "constants/*": ["src/constants/*"],
+      "config/*": ["src/config/*"],
+      "core/*": ["src/core/*"],
+      "exceptions/*": ["src/exceptions/*"],
+      "handlers/*": ["src/handlers/*"],
+      "middlewares/*": ["src/middlewares/*"],
+      "models/*": ["src/models/*"],
+      "services/*": ["src/services/*"],
+      "utils/*": ["src/utils/*"],
+      "lesgo/exceptions/*": [
+        "node_modules/lesgo/src/exceptions/*",
+        "node_modules/@types/lesgo/exceptions/*"
+      ],
+      "lesgo/middlewares/*": [
+        "node_modules/lesgo/src/middlewares/*",
+        "node_modules/@types/lesgo/middlewares/*"
+      ],
+      "lesgo/services/*": [
+        "node_modules/lesgo/src/services/*",
+        "node_modules/@types/lesgo/services/*"
+      ],
+      "lesgo/utils/*": [
+        "node_modules/lesgo/src/utils/*",
+        "node_modules/@types/lesgo/utils/*"
+      ]
     },
     "preserveConstEnums": true,
     "strictNullChecks": true,

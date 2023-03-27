@@ -1,8 +1,8 @@
-import isEmpty from 'Utils/isEmpty';
-import validateFields from 'Utils/validateFields';
-import ErrorException from 'Exceptions/ErrorException';
+import isEmpty from 'lesgo/utils/isEmpty';
+import validateFields from 'lesgo/utils/validateFields';
+import ErrorException from 'exceptions/ErrorException';
 
-const FILE = 'Core/utils/ping';
+const FILE = 'core/utils/ping';
 
 type Arguments = {
   'sample-error'?: string;

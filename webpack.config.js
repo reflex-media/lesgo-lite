@@ -72,6 +72,62 @@ module.exports = {
           },
           {
             name: 'Services',
+            alias: [path.resolve(__dirname, 'src/services/')],
+          },
+          {
+            name: 'Utils',
+            alias: [path.resolve(__dirname, 'src/utils/')],
+          },
+          {
+            name: 'config',
+            alias: [path.resolve(__dirname, 'src/config/')],
+          },
+          {
+            name: 'constants',
+            alias: [path.resolve(__dirname, 'src/constants/')],
+          },
+          {
+            name: 'core',
+            alias: [path.resolve(__dirname, 'src/core/')],
+          },
+          {
+            name: 'exceptions',
+            alias: [path.resolve(__dirname, 'src/exceptions/')],
+          },
+          {
+            name: 'handlers',
+            alias: [path.resolve(__dirname, 'src/handlers/')],
+          },
+          {
+            name: 'middlewares',
+            alias: [path.resolve(__dirname, 'src/middlewares/')],
+          },
+          {
+            name: 'models',
+            alias: [path.resolve(__dirname, 'src/models/')],
+          },
+          {
+            name: 'services',
+            alias: [path.resolve(__dirname, 'src/services/')],
+          },
+          {
+            name: 'utils',
+            alias: [path.resolve(__dirname, 'src/utils/')],
+          },
+          {
+            name: 'lesgo/exceptions',
+            alias: [
+              path.resolve(__dirname, 'node_modules/lesgo/src/exceptions/'),
+            ],
+          },
+          {
+            name: 'lesgo/middlewares',
+            alias: [
+              path.resolve(__dirname, 'node_modules/lesgo/src/middlewares/'),
+            ],
+          },
+          {
+            name: 'lesgo/services',
             alias: [
               path.resolve(__dirname, 'src/services/'),
               path.resolve(__dirname, '../lesgo-framework/src/services/'),
@@ -89,6 +145,8 @@ module.exports = {
               path.resolve(__dirname, '../lesgo-framework/src/utils/'),
               path.resolve(__dirname, 'node_modules/lesgo/src/utils/'),
             ],
+            name: 'lesgo/utils',
+            alias: [path.resolve(__dirname, 'node_modules/lesgo/src/utils/')],
           },
         ],
         'resolve'

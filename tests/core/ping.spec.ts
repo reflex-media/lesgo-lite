@@ -1,8 +1,8 @@
-import ping from 'Core/utils/ping';
+import ping from 'core/utils/ping';
 
-const FILE = 'Core/utils/ping';
+const FILE = 'core/utils/ping';
 
-describe('test Core/utils/ping', () => {
+describe('test core/utils/ping', () => {
   it('should return Pong by default', () => {
     return expect(ping()).resolves.toMatchObject({
       message: 'Pong',
