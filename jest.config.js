@@ -1,10 +1,6 @@
 module.exports = {
   verbose: true,
-  testMatch: [
-    '**/tests/*.spec.ts',
-    '**/tests/**/*.spec.ts',
-    '**/tests/**/*.spec.js',
-  ],
+  testMatch: ['**/tests/*.spec.ts', '**/tests/**/*.spec.ts'],
   collectCoverageFrom: [
     'src/**/*.ts',
     '!src/config/*.ts',
@@ -21,7 +17,10 @@ module.exports = {
   },
   setupFiles: ['./tests/setupTest.ts'],
   moduleNameMapper: {
-    '^Config(.*)$': '<rootDir>/src/config$1',
+    '^Config(.*)$': [
+      '<rootDir>/tests/__mocks__/config$1',
+      '<rootDir>/src/config$1',
+    ],
     '^Core(.*)$': '<rootDir>/src/core$1',
     '^Exceptions(.*)$': [
       '<rootDir>/src/exceptions$1',
@@ -38,6 +37,7 @@ module.exports = {
       '<rootDir>/src/services$1',
       '<rootDir>/node_modules/lesgo/src/services$1',
     ],
+    '^Types(.*)$': ['<rootDir>/src/types$1'],
     '^Utils(.*)$': [
       '<rootDir>/tests/__mocks__/utils$1',
       '<rootDir>/src/utils$1',

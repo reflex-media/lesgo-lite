@@ -1,9 +1,16 @@
 import middy from '@middy/core';
 import httpMiddleware from 'Middlewares/httpMiddleware';
+import { APIGatewayProxyEvent } from 'aws-lambda';
 import ping from 'Core/utils/ping';
 import app from 'Config/app';
 
-const originalHandler = event => {
+const originalHandler = (
+  event: APIGatewayProxyEvent & {
+    input: {
+      ['sample-error']: string;
+    };
+  }
+) => {
   return ping(event.input);
 };
 

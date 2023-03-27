@@ -14,19 +14,13 @@ type PingResult = {
   sub?: string;
 };
 
-const validateInput = (input?: Arguments): Arguments => {
+const validateInput = (input: Arguments): Arguments => {
   const validFields = [
     { key: 'sample-error', type: 'string', required: false },
     { key: 'authSub', type: 'string', required: false },
   ];
 
-  try {
-    return validateFields(input, validFields);
-  } catch (err) {
-    throw new ErrorException(err.message, `${FILE}::INVALID_INPUT`, 400, {
-      err,
-    });
-  }
+  return validateFields(input, validFields);
 };
 
 export default async (

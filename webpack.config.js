@@ -50,7 +50,8 @@ module.exports = {
             name: 'Exceptions',
             alias: [
               path.resolve(__dirname, 'src/exceptions/'),
-              path.resolve(__dirname, 'node_modules/lesgo/src/exceptions'),
+              path.resolve(__dirname, '../lesgo-framework/src/exceptions/'),
+              path.resolve(__dirname, 'node_modules/lesgo/src/exceptions/'),
             ],
           },
           {
@@ -61,6 +62,7 @@ module.exports = {
             name: 'Middlewares',
             alias: [
               path.resolve(__dirname, 'src/middlewares/'),
+              path.resolve(__dirname, '../lesgo-framework/src/middlewares'),
               path.resolve(__dirname, 'node_modules/lesgo/src/middlewares'),
             ],
           },
@@ -72,13 +74,19 @@ module.exports = {
             name: 'Services',
             alias: [
               path.resolve(__dirname, 'src/services/'),
+              path.resolve(__dirname, '../lesgo-framework/src/services/'),
               path.resolve(__dirname, 'node_modules/lesgo/src/services/'),
             ],
+          },
+          {
+            name: 'Types',
+            alias: [path.resolve(__dirname, 'src/types/')],
           },
           {
             name: 'Utils',
             alias: [
               path.resolve(__dirname, 'src/utils/'),
+              path.resolve(__dirname, '../lesgo-framework/src/utils/'),
               path.resolve(__dirname, 'node_modules/lesgo/src/utils/'),
             ],
           },

@@ -16,10 +16,10 @@ describe('test Core/utils/ping', () => {
     });
   });
 
-  it('should return error with invalid input', () => {
+  it('should return error with invalid type Auth Sub', () => {
     return expect(ping({}, 123)).rejects.toHaveProperty(
       'code',
-      `${FILE}::INVALID_INPUT`
+      `Utils/validateFields::INVALID_TYPE_AUTHSUB`
     );
   });
 
