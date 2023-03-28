@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "An even lighter Node.js template for a simple REST API microservice project using the Serverless Framework",
   "scripts": {
-    "start": "tsc && sls offline start --stage local --env local --skipCacheInvalidation --noAuth",
+    "start": "tsc && sls offline start --stage local --noAuth",
     "server": "sls offline start --stage local --env local",
     "watch": "tsc -w",
     "build": "tsc && lesgo-scripts -t build",
