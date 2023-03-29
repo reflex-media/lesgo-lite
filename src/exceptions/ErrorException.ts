@@ -1,23 +1,23 @@
-import isEmpty from 'Utils/isEmpty';
+import isEmpty from 'lesgo/utils/isEmpty';
 
 export default class ErrorException extends Error {
   statusCode: number;
 
   code: string;
 
-  extra: {};
+  extra?: string | Record<string, unknown>;
 
   constructor(
     message: string,
-    code: string = 'ERROR_EXCEPTION',
-    statusCode: number = 500,
-    extra: object = {}
+    errorCode = 'ERROR_EXCEPTION',
+    statusCode = 500,
+    extra: string | Record<string, unknown> = {}
   ) {
     super();
     this.name = 'ErrorException';
     this.message = message;
     this.statusCode = statusCode;
-    this.code = code;
+    this.code = errorCode;
 
     Error.captureStackTrace(this, this.constructor);
 

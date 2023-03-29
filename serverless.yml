@@ -1,4 +1,5 @@
 service: ${env:APP_NAME}
+frameworkVersion: '3'
 
 plugins:
   - serverless-webpack
@@ -19,12 +20,15 @@ plugins:
 package:
   individually: true
 
+useDotenv: true
+configValidationMode: error
+
 provider:
   name: aws
   architecture: arm64
-  runtime: nodejs12.x
+  runtime: nodejs16.x
   memorySize: 128
-  timeout: 5
+  timeout: 3
   stackName: ${self:service}-${self:provider.stage}
   apiName: ${self:provider.stackName}
   stage: ${opt:stage, 'local'}
@@ -71,6 +75,8 @@ custom:
     port: 8888
     ignoreJWTSignature: true
   logRetentionInDays: 7
+  contentEncoding:
+    contentCompression: 100
   dotenv:
     basePath: config/environments/
   #
@@ -94,7 +100,7 @@ functions:
   - ${file(${self:custom.path.functions}/utils.yml)}
 
 #
-# Add resources here
-#
-resources:
+# Uncomment below to add resources
+# 
+# resources:
   # - ${file(${self:custom.path.resources}/sample-resource.yml)}
