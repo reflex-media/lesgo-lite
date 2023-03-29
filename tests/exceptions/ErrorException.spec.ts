@@ -1,4 +1,4 @@
-import ErrorException from 'Exceptions/ErrorException';
+import ErrorException from 'exceptions/ErrorException';
 
 describe('test ErrorException', () => {
   it('should have the correct format with default parameters', () => {
