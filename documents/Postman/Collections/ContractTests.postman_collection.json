@@ -1,8 +1,9 @@
 {
 	"info": {
-		"_postman_id": "74d8ebd7-4129-4880-986f-dfff3a6f8a10",
+		"_postman_id": "5345a2b7-a6e7-4b4a-95e6-67423e3f7662",
 		"name": "ContractTests",
-		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "13620237"
 	},
 	"item": [
 		{
@@ -126,7 +127,7 @@
 									"});",
 									"",
 									"pm.test('Response data is valid', function () {",
-									"    pm.expect(resError.code).to.eql(\"Core/utils/ping::SAMPLE_ERROR\");",
+									"    pm.expect(resError.code).to.eql(\"core/utils/ping::SAMPLE_ERROR\");",
 									"    pm.expect(resError.message).to.eql(\"ErrorException: Error exception\");",
 									"    pm.expect(resError.details.validated).to.have.property('sample-error', 'someError');",
 									"});"

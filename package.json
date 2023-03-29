@@ -20,7 +20,7 @@
     "lint-fix": "eslint '**/*.{js,ts,jsx,tsx}' --fix"
   },
   "dependencies": {
-    "lesgo": "reflex-media/lesgo-framework#release/v1.1.0",
+    "lesgo": "github:reflex-media/lesgo-framework#feature/prep-v1.1",
     "middy": "xXLXx/middy-core#1.4.1"
   },
   "devDependencies": {
