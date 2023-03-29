@@ -75,8 +75,16 @@ module.exports = {
             alias: [path.resolve(__dirname, 'src/services/')],
           },
           {
+            name: 'Types',
+            alias: [path.resolve(__dirname, 'src/types/')],
+          },
+          {
             name: 'Utils',
-            alias: [path.resolve(__dirname, 'src/utils/')],
+            alias: [
+              path.resolve(__dirname, 'src/utils/'),
+              path.resolve(__dirname, '../lesgo-framework/src/utils'),
+              path.resolve(__dirname, 'node_modules/lesgo/src/utils'),
+            ],
           },
           {
             name: 'config',
@@ -129,22 +137,10 @@ module.exports = {
           {
             name: 'lesgo/services',
             alias: [
-              path.resolve(__dirname, 'src/services/'),
-              path.resolve(__dirname, '../lesgo-framework/src/services/'),
               path.resolve(__dirname, 'node_modules/lesgo/src/services/'),
             ],
           },
           {
-            name: 'Types',
-            alias: [path.resolve(__dirname, 'src/types/')],
-          },
-          {
-            name: 'Utils',
-            alias: [
-              path.resolve(__dirname, 'src/utils/'),
-              path.resolve(__dirname, '../lesgo-framework/src/utils/'),
-              path.resolve(__dirname, 'node_modules/lesgo/src/utils/'),
-            ],
             name: 'lesgo/utils',
             alias: [path.resolve(__dirname, 'node_modules/lesgo/src/utils/')],
           },
