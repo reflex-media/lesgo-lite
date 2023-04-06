@@ -17,10 +17,13 @@
     "coverage": "tsc && jest --coverage",
     "coveralls": "npm run coverage && cat ./coverage/lcov.info | coveralls",
     "lint": "eslint '**/*.{js,ts,jsx,tsx}' --quiet",
-    "lint-fix": "eslint '**/*.{js,ts,jsx,tsx}' --fix"
+    "lint-fix": "eslint '**/*.{js,ts,jsx,tsx}' --fix",
+    "dev-link": "rm -rf ../lesgo-framework/node_modules && npm link --no-save ../lesgo-framework",
+    "dev-unlink": "npm uninstall --global lesgo",
+    "dev-list": "npm ls -g --depth=0 --link=true"
   },
   "dependencies": {
-    "lesgo": "github:reflex-media/lesgo-framework#feature/prep-v1.1",
+    "lesgo": "file:../lesgo-framework",
     "middy": "xXLXx/middy-core#1.4.1"
   },
   "devDependencies": {

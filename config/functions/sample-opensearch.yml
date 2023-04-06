@@ -1,0 +1,10 @@
+search:
+  handler: ${self:custom.path.app}/handlers/sample-opensearch/search.handler
+  description: Sample search on OpenSearch
+  memorySize: 512
+  timeout: 5
+  reservedConcurrency: 1
+  events:
+    - httpApi:
+        path: /v1/sample-opensearch/search
+        method: GET
