@@ -39,7 +39,6 @@
     "@typescript-eslint/eslint-plugin": "^5.57.0",
     "@typescript-eslint/parser": "^5.57.0",
     "aws-lambda": "^1.0.7",
-    "aws-sdk": "^2.1345.0",
     "babel-loader": "^9.1.2",
     "babel-plugin-webpack-aliases": "^1.1.3",
     "coveralls": "^3.1.1",

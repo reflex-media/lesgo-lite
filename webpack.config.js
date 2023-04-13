@@ -31,7 +31,7 @@ module.exports = {
       },
     ],
   },
-  externals: [{ 'aws-sdk': 'commonjs aws-sdk' }, '@aws-sdk', 'cardinal'],
+  externals: ['cardinal', '@aws-sdk/client-dynamodb', '@aws-sdk/client-opensearch', '@aws-sdk/client-s3', '@aws-sdk/client-sqs', '@aws-sdk/lib-dynamodb'],
   resolve: {
     extensions: ['.tsx', '.ts', '.js'],
     plugins: [
