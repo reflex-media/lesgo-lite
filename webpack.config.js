@@ -31,7 +31,7 @@ module.exports = {
       },
     ],
   },
-  externals: [{ 'aws-sdk': 'commonjs aws-sdk' }, 'cardinal'],
+  externals: [{ 'aws-sdk': 'commonjs aws-sdk' }, '@aws-sdk', 'cardinal'],
   resolve: {
     extensions: ['.tsx', '.ts', '.js'],
     plugins: [
