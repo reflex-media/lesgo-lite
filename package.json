@@ -23,7 +23,7 @@
     "dev-list": "npm ls -g --depth=0 --link=true"
   },
   "dependencies": {
-    "lesgo": "file:../lesgo-framework",
+    "lesgo": "github:reflex-media/lesgo-framework#feature/prep-v1.1",
     "middy": "xXLXx/middy-core#1.4.1"
   },
   "devDependencies": {
@@ -72,7 +72,7 @@
   "license": "MIT",
   "engineStrict": true,
   "engines": {
-    "node": ">=16.0.0"
+    "node": ">=18.0.0"
   },
   "husky": {
     "hooks": {
