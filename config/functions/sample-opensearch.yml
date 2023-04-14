@@ -20,8 +20,19 @@ sampleOpenSearchAddDocument:
         path: /v1/sample/opensearch
         method: POST
 
-sampleOpenSearchSearch:
-  handler: ${self:custom.path.app}/handlers/sample-openSearch/search.handler
+sampleOpenSearchUpdateDocument:
+  handler: ${self:custom.path.app}/handlers/sample-openSearch/updateDocument.handler
+  description: Test OpenSearch update document to index
+  memorySize: 512
+  timeout: 5
+  reservedConcurrency: 1
+  events:
+    - httpApi:
+        path: /v1/sample/opensearch/{documentId}
+        method: PUT
+
+sampleOpenSearchSearchIndex:
+  handler: ${self:custom.path.app}/handlers/sample-openSearch/searchIndex.handler
   description: Test OpenSearch search index
   memorySize: 512
   timeout: 5

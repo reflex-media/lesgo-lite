@@ -36,7 +36,7 @@ type Query = {
   };
 };
 
-const FILE = 'handlers/sample-opensearch/search';
+const FILE = 'handlers/sample-opensearch/searchIndex';
 
 const originalHandler = async (
   event: APIGatewayProxyEvent & { input: Arguments }
@@ -165,7 +165,7 @@ const originalHandler = async (
   };
 
   const opensearchInstance = opensearch();
-  const resp = await opensearchInstance.search(query);
+  const resp = await opensearchInstance.searchIndex(query);
   return resp;
 };
 

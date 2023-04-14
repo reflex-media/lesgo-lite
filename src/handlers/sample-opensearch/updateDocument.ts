@@ -3,7 +3,6 @@ import { APIGatewayProxyEvent } from 'aws-lambda';
 import httpMiddleware from 'lesgo/middlewares/httpMiddleware';
 import opensearch from 'lesgo/utils/opensearch';
 import app from 'config/app';
-import generateUid from 'lesgo/utils/generateUid';
 
 type Arguments = {
   uid?: string;
@@ -31,19 +30,21 @@ type Arguments = {
 };
 
 const originalHandler = async (
-  event: APIGatewayProxyEvent & { input: Arguments }
+  event: APIGatewayProxyEvent & {
+    input: Arguments;
+    pathParameters: { documentId: string };
+  }
 ) => {
+  const documentId = event.pathParameters.documentId;
+
   let { input } = event;
 
-  let documentId = input.uid;
   if (typeof input.uid === 'undefined') {
-    documentId = await generateUid();
+    input = {
+      ...input,
+      uid: documentId,
+    };
   }
-
-  input = {
-    ...input,
-    uid: documentId,
-  };
 
   const opensearchInstance = opensearch();
   const resp = await opensearchInstance.indexDocument(documentId, input);
