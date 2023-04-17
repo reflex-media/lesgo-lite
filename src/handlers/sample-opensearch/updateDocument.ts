@@ -35,7 +35,7 @@ const originalHandler = async (
     pathParameters: { documentId: string };
   }
 ) => {
-  const documentId = event.pathParameters.documentId;
+  const { documentId } = event.pathParameters;
 
   let { input } = event;
 

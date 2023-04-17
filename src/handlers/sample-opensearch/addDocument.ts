@@ -35,8 +35,8 @@ const originalHandler = async (
 ) => {
   let { input } = event;
 
-  let documentId = input.uid;
-  if (typeof input.uid === 'undefined') {
+  let documentId = input.uid ?? '';
+  if (!input.uid) {
     documentId = await generateUid();
   }
 

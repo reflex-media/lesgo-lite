@@ -9,7 +9,7 @@ const originalHandler = async (
     pathParameters: { documentId: string | number };
   }
 ) => {
-  const documentId = event.pathParameters.documentId;
+  const { documentId } = event.pathParameters;
 
   const opensearchInstance = opensearch();
   const resp = await opensearchInstance.deleteDocument(documentId);

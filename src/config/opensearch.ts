@@ -1,14 +1,12 @@
 /**
  * This is a sample config for OpenSearch
  */
-
 export default {
   default: 'aws',
   adapters: {
     aws: {
-      region: 'ap-southeast-1',
-      host:
-        'https://vpc-lesgo-dev-pu5cfyzhuwbd76zgpytz7fucw4.ap-southeast-1.es.amazonaws.com',
+      region: process.env.AWS_OPENSEARCH_REGION || 'ap-southeast-1',
+      host: process.env.AWS_OPENSEARCH_HOST || '',
       index: {
         name: 'lesgo',
         type: '_doc',

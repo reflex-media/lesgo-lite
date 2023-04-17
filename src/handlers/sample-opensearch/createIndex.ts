@@ -4,6 +4,7 @@ import httpMiddleware from 'lesgo/middlewares/httpMiddleware';
 import opensearch from 'lesgo/utils/opensearch';
 import app from 'config/app';
 
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 const originalHandler = async (event: APIGatewayProxyEvent) => {
   const opensearchInstance = opensearch();
   const resp = await opensearchInstance.createIndex();

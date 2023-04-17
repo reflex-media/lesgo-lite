@@ -28,15 +28,31 @@ type Query = {
         'location.state'?: string;
         'location.country'?: string;
       };
+      nested?: {
+        query?: {
+          term?: {
+            'favoriteMovies.genre'?: string;
+          };
+          match?: {
+            'favoriteMovies.director'?: string;
+          };
+        };
+        path: string;
+      };
+      bool?: {
+        should?: {
+          match_phrase: {
+            'profile.aboutMe'?: string;
+            'profile.headline'?: string;
+          };
+        }[];
+      };
       match?: {
         name?: string;
-        'profile.aboutMe'?: string;
       };
     }[];
   };
 };
-
-const FILE = 'handlers/sample-opensearch/searchIndex';
 
 const originalHandler = async (
   event: APIGatewayProxyEvent & { input: Arguments }
@@ -52,7 +68,6 @@ const originalHandler = async (
     name,
     gender,
     profileText,
-    favoriteMovieTitle,
     favoriteMovieDirector,
     favoriteMovieGenre,
     city,
@@ -61,7 +76,6 @@ const originalHandler = async (
   } = input;
 
   const mustMatch = [];
-  const shouldMatch = [];
 
   if (!isEmpty(uid)) {
     mustMatch.push({
