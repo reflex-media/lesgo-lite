@@ -58,13 +58,17 @@ provider:
       # - ${env:AWS_VPC_SUBNET_3_ID}
       # - ${env:AWS_VPC_SUBNET_4_ID}
   #
-  # Add additional permission for your app here
+  # Add additional permissions for your app here
   #
-  # iamRoleStatements:
-  #   - Effect: Allow
-  #     Action:
-  #       - lambda:InvokeFunction
-  #     Resource: '*'
+  iamRoleStatements:
+    - Effect: 'Allow'
+      Action:
+        - 'dynamodb:Query'
+        - 'dynamodb:GetItem'
+        - 'dynamodb:PutItem'
+        - 'dynamodb:UpdateItem'
+        - 'dynamodb:DeleteItem'
+      Resource: 'arn:aws:dynamodb:${self:provider.region}:*:table/${self:provider.stackName}-*'
 
 custom:
   path:
@@ -98,10 +102,11 @@ custom:
 #
 functions:
   - ${file(${self:custom.path.functions}/utils.yml)}
+  - ${file(${self:custom.path.functions}/sample-dynamodb.yml)}
   - ${file(${self:custom.path.functions}/sample-opensearch.yml)}
 
 #
-# Uncomment below to add resources
-# 
-# resources:
-  # - ${file(${self:custom.path.resources}/sample-resource.yml)}
+# Add resources here
+#
+resources:
+  - ${file(${self:custom.path.resources}/sample-dynamodb.yml)}
