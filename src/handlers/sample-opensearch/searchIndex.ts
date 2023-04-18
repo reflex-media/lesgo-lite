@@ -1,7 +1,7 @@
 import middy from '@middy/core';
 import { APIGatewayProxyEvent } from 'aws-lambda';
 import httpMiddleware from 'lesgo/middlewares/httpMiddleware';
-import opensearch from 'lesgo/utils/opensearch';
+import { searchIndex } from 'lesgo/utils/opensearch';
 import app from 'config/app';
 import isEmpty from 'lesgo/utils/isEmpty';
 
@@ -178,8 +178,7 @@ const originalHandler = async (
     },
   };
 
-  const opensearchInstance = opensearch();
-  const resp = await opensearchInstance.searchIndex(query);
+  const resp = await searchIndex(query);
   return resp;
 };
 

@@ -1,9 +1,9 @@
 import middy from '@middy/core';
 import { APIGatewayProxyEvent } from 'aws-lambda';
 import httpMiddleware from 'lesgo/middlewares/httpMiddleware';
-import opensearch from 'lesgo/utils/opensearch';
 import app from 'config/app';
 import generateUid from 'lesgo/utils/generateUid';
+import { indexDocument } from 'lesgo/utils/opensearch';
 
 type Arguments = {
   uid?: string;
@@ -45,8 +45,7 @@ const originalHandler = async (
     uid: documentId,
   };
 
-  const opensearchInstance = opensearch();
-  const resp = await opensearchInstance.indexDocument(documentId, input);
+  const resp = await indexDocument(documentId, input);
   return resp;
 };
 

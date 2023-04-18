@@ -31,7 +31,7 @@ module.exports = {
       },
     ],
   },
-  externals: ['cardinal', '@aws-sdk/client-dynamodb', '@aws-sdk/client-opensearch', '@aws-sdk/client-s3', '@aws-sdk/client-sqs', '@aws-sdk/lib-dynamodb'],
+  externals: ['cardinal', /^@aws-sdk\/.*/],
   resolve: {
     extensions: ['.tsx', '.ts', '.js'],
     plugins: [

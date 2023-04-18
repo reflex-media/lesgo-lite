@@ -1,7 +1,7 @@
 import middy from '@middy/core';
 import { APIGatewayProxyEvent } from 'aws-lambda';
 import httpMiddleware from 'lesgo/middlewares/httpMiddleware';
-import opensearch from 'lesgo/utils/opensearch';
+import { deleteDocument } from 'lesgo/utils/opensearch';
 import app from 'config/app';
 
 const originalHandler = async (
@@ -11,8 +11,7 @@ const originalHandler = async (
 ) => {
   const { documentId } = event.pathParameters;
 
-  const opensearchInstance = opensearch();
-  const resp = await opensearchInstance.deleteDocument(documentId);
+  const resp = await deleteDocument(documentId);
   return resp;
 };
 
