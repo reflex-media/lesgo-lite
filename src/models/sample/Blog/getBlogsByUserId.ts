@@ -11,12 +11,7 @@ export default async (userId: string) => {
     userId,
     blogsTable,
   });
-  const resp = await query(
-    blogsTable.name,
-    'userId = :u',
-    { ':u': userId },
-    'userId,blogId,author,content,snippet,title,createdAt,updatedAt'
-  );
+  const resp = await query(blogsTable.name, 'userId = :u', { ':u': userId });
   logger.debug(`${FILE}::DATA FETCHED SUCCESSFULLY`, { resp });
 
   return resp;

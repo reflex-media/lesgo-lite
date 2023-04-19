@@ -3,30 +3,35 @@ import dynamodbConfig from 'config/dynamodb';
 import logger from 'lesgo/utils/logger';
 import ErrorException from 'exceptions/ErrorException';
 
-const FILE = 'models/Blog/getBlog';
+const FILE = 'models/Blog/getBlogsContent';
 
-export default async (blogId: string, userId: string) => {
+export default async (userId: string, returnFields: string) => {
   const { blogsTable } = dynamodbConfig.tables;
 
   logger.debug(`${FILE}::FETCHING DATA`, {
-    blogId,
     userId,
     blogsTable,
+    returnFields,
   });
-  const resp = await query(blogsTable.name, 'userId = :u AND blogId = :b', {
-    ':u': userId,
-    ':b': blogId,
-  });
+
+  const resp = await query(
+    blogsTable.name,
+    'userId = :u',
+    { ':u': userId },
+    {
+      projectionExpression: returnFields,
+    }
+  );
   logger.debug(`${FILE}::DATA FETCHED SUCCESSFULLY`, { resp });
 
   if (typeof resp !== 'undefined' && resp.length > 0) {
-    return resp[0];
+    return resp;
   }
 
   throw new ErrorException(
     'Unable to find record',
     `${FILE}::NO_RECORD_FOUND`,
     404,
-    { blogId, userId }
+    { returnFields, userId }
   );
 };
