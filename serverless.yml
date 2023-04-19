@@ -61,7 +61,7 @@ provider:
   # Add additional permissions for your app here
   #
   iamRoleStatements:
-    - Effect: 'Allow'
+    - Effect: 'Allow' # Required for access to dynamodb
       Action:
         - 'dynamodb:Query'
         - 'dynamodb:GetItem'
@@ -69,6 +69,12 @@ provider:
         - 'dynamodb:UpdateItem'
         - 'dynamodb:DeleteItem'
       Resource: 'arn:aws:dynamodb:${self:provider.region}:*:table/${self:provider.stackName}-*'
+    - Effect: 'Allow' # Required for access to SQS
+      Action:
+        - 'sqs:SendMessage'
+        - 'sqs:ReceiveMessage'
+        - 'sqs:DeleteMessage'
+      Resource: 'arn:aws:sqs:${self:provider.region}:*:*'
 
 custom:
   path:
@@ -104,9 +110,11 @@ functions:
   - ${file(${self:custom.path.functions}/utils.yml)}
   - ${file(${self:custom.path.functions}/sample-dynamodb.yml)}
   - ${file(${self:custom.path.functions}/sample-opensearch.yml)}
+  - ${file(${self:custom.path.functions}/sample-sqs.yml)}
 
 #
 # Add resources here
 #
 resources:
   - ${file(${self:custom.path.resources}/sample-dynamodb.yml)}
+  - ${file(${self:custom.path.resources}/sample-sqs.yml)}
