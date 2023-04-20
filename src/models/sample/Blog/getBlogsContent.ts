@@ -2,6 +2,7 @@ import { query } from 'lesgo/utils/dynamodb';
 import dynamodbConfig from 'config/dynamodb';
 import logger from 'lesgo/utils/logger';
 import ErrorException from 'exceptions/ErrorException';
+import { BlogQueryOutput } from 'types/blogs';
 
 const FILE = 'models/Blog/getBlogsContent';
 
@@ -14,7 +15,7 @@ export default async (userId: string, returnFields: string) => {
     returnFields,
   });
 
-  const resp = await query(
+  const resp = <Partial<BlogQueryOutput>>await query(
     blogsTable.name,
     'userId = :u',
     { ':u': userId },
@@ -24,7 +25,7 @@ export default async (userId: string, returnFields: string) => {
   );
   logger.debug(`${FILE}::DATA FETCHED SUCCESSFULLY`, { resp });
 
-  if (typeof resp !== 'undefined' && resp.length > 0) {
+  if (resp.length > 0) {
     return resp;
   }
 

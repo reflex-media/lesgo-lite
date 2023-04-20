@@ -16,6 +16,7 @@
       "middlewares/*": ["src/middlewares/*"],
       "models/*": ["src/models/*"],
       "services/*": ["src/services/*"],
+      "types/*": ["src/types/*"],
       "utils/*": ["src/utils/*"],
       "lesgo/exceptions/*": [
         "node_modules/lesgo/src/exceptions/*",

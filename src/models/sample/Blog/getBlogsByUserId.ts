@@ -1,6 +1,7 @@
 import { query } from 'lesgo/utils/dynamodb';
 import dynamodbConfig from 'config/dynamodb';
 import logger from 'lesgo/utils/logger';
+import { BlogQueryOutput } from 'types/blogs';
 
 const FILE = 'models/Blog/getBlogsByUserId';
 
@@ -11,7 +12,9 @@ export default async (userId: string) => {
     userId,
     blogsTable,
   });
-  const resp = await query(blogsTable.name, 'userId = :u', { ':u': userId });
+  const resp = <BlogQueryOutput>(
+    await query(blogsTable.name, 'userId = :u', { ':u': userId })
+  );
   logger.debug(`${FILE}::DATA FETCHED SUCCESSFULLY`, { resp });
 
   return resp;

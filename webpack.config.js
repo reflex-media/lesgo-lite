@@ -71,6 +71,10 @@ module.exports = {
             alias: [path.resolve(__dirname, 'src/services/')],
           },
           {
+            name: 'types',
+            alias: [path.resolve(__dirname, 'src/types/')],
+          },
+          {
             name: 'utils',
             alias: [path.resolve(__dirname, 'src/utils/')],
           },

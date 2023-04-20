@@ -21,6 +21,8 @@ module.exports = {
     '^core(.*)$': '<rootDir>/src/core$1',
     '^exceptions(.*)$': '<rootDir>/src/exceptions$1',
     '^models(.*)$': '<rootDir>/src/models$1',
+    '^services(.*)$': '<rootDir>/src/services$1',
+    '^types(.*)$': '<rootDir>/src/types$1',
     '^lesgo(.*)$': '<rootDir>/node_modules/lesgo/src$1',
   },
   transformIgnorePatterns: ['/node_modules/(?!lesgo).+\\.js$'],

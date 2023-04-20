@@ -4,19 +4,10 @@ import httpMiddleware from 'lesgo/middlewares/httpMiddleware';
 import app from 'config/app';
 import generateUid from 'lesgo/utils/generateUid';
 import insertBlog from 'models/sample/Blog/insertBlog';
-
-type Arguments = {
-  userId: string;
-  authorName: string;
-  title: string;
-  snippet: string;
-  content: string;
-  isPublished?: string | boolean;
-  publishedAt?: string | number | null;
-};
+import { InsertRecordInput } from 'types/blogs';
 
 const originalHandler = async (
-  event: APIGatewayProxyEvent & { input: Arguments }
+  event: APIGatewayProxyEvent & { input: InsertRecordInput }
 ) => {
   const { input } = event;
   const documentId = await generateUid();

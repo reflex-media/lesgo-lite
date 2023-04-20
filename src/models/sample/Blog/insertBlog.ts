@@ -2,23 +2,11 @@ import { put } from 'lesgo/utils/dynamodb';
 import dynamodbConfig from 'config/dynamodb';
 import logger from 'lesgo/utils/logger';
 import getCurrentTimestamp from 'lesgo/utils/getCurrentTimestamp';
+import { InsertBlogModelInput } from 'types/blogs';
 
 const FILE = 'models/Blog/insertBlog';
 
-type BlogRecord = {
-  userId: string;
-  blogId: string;
-  title: string;
-  snippet: string;
-  content: string;
-  isPublished: boolean;
-  publishedAt: number | null;
-  author: {
-    name: string;
-  };
-};
-
-export default async (params: BlogRecord) => {
+export default async (params: InsertBlogModelInput) => {
   const { blogsTable } = dynamodbConfig.tables;
 
   const dateTimeNow = getCurrentTimestamp();
