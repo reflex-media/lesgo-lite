@@ -109,6 +109,7 @@ custom:
 functions:
   - ${file(${self:custom.path.functions}/utils.yml)}
   - ${file(${self:custom.path.functions}/sample-dynamodb.yml)}
+  - ${file(${self:custom.path.functions}/sample-memcache-elasticache.yml)}
   - ${file(${self:custom.path.functions}/sample-opensearch.yml)}
   - ${file(${self:custom.path.functions}/sample-sqs.yml)}
 
