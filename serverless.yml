@@ -78,6 +78,7 @@ provider:
     - Effect: 'Allow' # Required for S3
       Action:
         - 's3:GetObject'
+        - 's3:PutObject'
       Resource: 'arn:aws:s3:::${self:provider.stackName}/*'
 
 custom:
