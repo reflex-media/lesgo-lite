@@ -75,6 +75,10 @@ provider:
         - 'sqs:ReceiveMessage'
         - 'sqs:DeleteMessage'
       Resource: 'arn:aws:sqs:${self:provider.region}:*:*'
+    - Effect: 'Allow' # Required for S3
+      Action:
+        - 's3:GetObject'
+      Resource: 'arn:aws:s3:::${self:provider.stackName}/*'
 
 custom:
   path:
@@ -111,6 +115,7 @@ functions:
   - ${file(${self:custom.path.functions}/sample-dynamodb.yml)}
   - ${file(${self:custom.path.functions}/sample-memcache-elasticache.yml)}
   - ${file(${self:custom.path.functions}/sample-opensearch.yml)}
+  - ${file(${self:custom.path.functions}/sample-s3.yml)}
   - ${file(${self:custom.path.functions}/sample-sqs.yml)}
 
 #

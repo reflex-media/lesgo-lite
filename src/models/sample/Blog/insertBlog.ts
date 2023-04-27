@@ -13,7 +13,7 @@ export default async (params: InsertBlogModelInput) => {
 
   const insertData = {
     ...params,
-    isDelete: false,
+    isDeleted: false,
     createdAt: dateTimeNow,
     updatedAt: dateTimeNow,
     deletedAt: null,
