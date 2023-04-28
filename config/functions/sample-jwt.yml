@@ -1,0 +1,10 @@
+sampleJWTSign:
+  handler: ${self:custom.path.app}/handlers/sample-jwt/sign.handler
+  description: Test sign JWT
+  memorySize: 512
+  timeout: 5
+  reservedConcurrency: 1
+  events:
+    - httpApi:
+        path: /v1/sample/jwt
+        method: POST
