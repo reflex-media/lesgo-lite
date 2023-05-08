@@ -7,6 +7,7 @@ import s3Config from 'config/s3';
 
 type Arguments = {
   objectKey: string;
+  metadata?: string;
 };
 
 const originalHandler = async (
@@ -18,10 +19,15 @@ const originalHandler = async (
 
   const signedUrl = await getUploadSignedUrl(
     `${s3Config.lesgoLiteBucket.path}/${input.objectKey}`,
-    s3Config.lesgoLiteBucket.bucket
+    s3Config.lesgoLiteBucket.bucket,
+    { metadata: input.metadata ? JSON.parse(input.metadata) : undefined }
   );
 
-  return signedUrl;
+  return {
+    objectKey: input.objectKey,
+    objectUrl: `${s3Config.lesgoLiteBucket.uri}/${s3Config.lesgoLiteBucket.path}/${input.objectKey}`,
+    signedUrl,
+  };
 };
 
 // eslint-disable-next-line import/prefer-default-export
